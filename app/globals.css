@@ -1,23 +1,60 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --ring: #0a0a0a;
+  --card: #ffffff;
+  --card-border: #e5e5e5;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --muted: #171717;
+  --muted-foreground: #a3a3a3;
+  --border: #262626;
+  --ring: #fafafa;
+  --card: #121212;
+  --card-border: #262626;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
-    @apply bg-white dark:bg-dark text-gray-900 dark:text-white transition-colors duration-300;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  .rbp-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .glass-card {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  .rbp-card:hover {
+    border-color: rgba(249, 115, 22, 0.4);
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-foreground via-neutral-400 to-primary bg-clip-text text-transparent;
   }
   .section-padding {
-    @apply px-4 py-20 md:px-8 lg:px-16;
+    @apply px-5 py-24 md:px-12 lg:px-20 max-w-7xl mx-auto;
   }
 }
+

@@ -1,122 +1,127 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Zap, Trophy, Users, Sparkles } from "lucide-react";
+import FlowShader from "@/components/FlowShader";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-dark"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-24 overflow-hidden bg-background"
     >
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, 15, 0], y: [0, 15, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
-        />
-      </div>
+      {/* Signature WebGL Flow Shader Backdrop */}
+      <FlowShader />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Badge */}
+      {/* Content Container */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        {/* Live Status Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 text-xs font-mono font-medium mb-8 backdrop-blur-md shadow-xs"
         >
-          <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-          Official µLearn Chapter at CUCEK
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+          </span>
+          <span>Official µLearn Campus Chapter @ CUCEK</span>
+          <span className="text-neutral-300 dark:text-neutral-700">|</span>
+          <span className="text-primary font-bold inline-flex items-center gap-1">
+            <Sparkles className="w-3 h-3" />
+            Active Chapter
+          </span>
         </motion.div>
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6"
+          className="text-4xl sm:text-6xl md:text-7xl font-heading font-extrabold tracking-tight leading-[1.08] mb-6 text-foreground"
         >
-          Break the{" "}
-          <span className="gradient-text">Echo Chamber</span>
+          Empowering the Next Generation of <span className="gradient-text">Learners</span>
         </motion.h1>
 
-        {/* Subheadline */}
+        {/* Official Hero Sentence from mulearn.org */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto mb-10 leading-relaxed font-sans"
         >
-          µLearn CUCEK is your gateway to a synergic community of learners —
-          where curiosity meets opportunity and growth knows no limits.
+          µLearn is a synergic philosophy of education built on a culture of mutual learning through micro groups of peers. At CUCEK, we empower curious minds to connect, innovate, and grow together.
         </motion.p>
 
-        {/* CTAs */}
+        {/* Micro-interaction CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          <a
+          <MagneticButton
+            asAnchor
             href="https://app.mulearn.org"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-orange-600 hover:scale-105 transition-all duration-200 shadow-lg shadow-primary/30"
+            className="px-8 py-4 bg-primary text-white font-medium text-sm rounded-full shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            Join µLearn CUCEK
-          </a>
-          <a
-            href="#about"
-            className="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white hover:scale-105 transition-all duration-200"
+            <span>Join µLearn CUCEK</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </MagneticButton>
+
+          <MagneticButton
+            asAnchor
+            href="#interest-groups"
+            className="px-8 py-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-foreground font-medium text-sm rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            Learn More
-          </a>
+            <span>Explore Interest Groups</span>
+          </MagneticButton>
         </motion.div>
 
-        {/* Stats preview */}
+        {/* Monospace Micro-interaction Stats Ticker */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-8 mt-16 text-center"
+          className="inline-flex flex-wrap items-center justify-center gap-6 sm:gap-10 px-8 py-4 rounded-3xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 backdrop-blur-md shadow-xs"
         >
-          {[
-            { value: "60K+", label: "Learners" },
-            { value: "15+", label: "Interest Groups" },
-            { value: "100+", label: "Events" },
-          ].map((stat) => (
-            <div key={stat.label} className="flex flex-col">
-              <span className="text-3xl font-heading font-extrabold text-primary">
-                {stat.value}
-              </span>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+          <div className="flex items-center gap-2.5">
+            <Users className="w-4 h-4 text-primary" />
+            <span className="text-base font-mono font-bold text-foreground">60,000+</span>
+            <span className="text-xs text-neutral-500 font-medium">Statewide Learners</span>
+          </div>
+
+          <span className="hidden sm:inline text-neutral-300 dark:text-neutral-700 font-mono">/</span>
+
+          <div className="flex items-center gap-2.5">
+            <Zap className="w-4 h-4 text-amber-500 fill-amber-500" />
+            <span className="text-base font-mono font-bold text-foreground">48,500+</span>
+            <span className="text-xs text-neutral-500 font-medium">Karma Points</span>
+          </div>
+
+          <span className="hidden sm:inline text-neutral-300 dark:text-neutral-700 font-mono">/</span>
+
+          <div className="flex items-center gap-2.5">
+            <Trophy className="w-4 h-4 text-indigo-500" />
+            <span className="text-base font-mono font-bold text-foreground">#8 Rank</span>
+            <span className="text-xs text-neutral-500 font-medium">Kerala Chapter</span>
+          </div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-400 dark:text-gray-500"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-neutral-400 dark:text-neutral-600 cursor-pointer"
       >
-        <ArrowDown className="w-6 h-6" />
+        <a href="#about" aria-label="Scroll down">
+          <ArrowDown className="w-5 h-5 hover:text-primary transition-colors" />
+        </a>
       </motion.div>
     </section>
   );

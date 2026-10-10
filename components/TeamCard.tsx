@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { TeamMember } from "@/types";
+import SpotlightCard from "./SpotlightCard";
 
 function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -21,6 +22,23 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
+
 export default function TeamCard({
   member,
   index,
@@ -30,36 +48,54 @@ export default function TeamCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white dark:bg-dark border border-gray-100 dark:border-gray-800 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      className="h-full"
     >
-      {/* Avatar */}
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-heading font-extrabold text-xl mb-4 group-hover:scale-110 transition-transform duration-300">
-        {member.initials}
-      </div>
+      <SpotlightCard className="group flex flex-col items-center text-center p-6 h-full hover:-translate-y-1.5 transition-all duration-300">
+        {/* Avatar Badge */}
+        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-indigo-500/20 border border-primary/30 flex items-center justify-center text-foreground font-mono font-bold text-base mb-4 group-hover:scale-110 transition-transform">
+          {member.initials}
+        </div>
 
-      {/* Name */}
-      <h3 className="font-heading font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-200">
-        {member.name}
-      </h3>
+        {/* Name */}
+        <h3 className="font-heading font-bold text-foreground group-hover:text-primary transition-colors text-base mb-1">
+          {member.name}
+        </h3>
 
-      {/* Role */}
-      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-4">
-        {member.role}
-      </p>
+        {/* Role */}
+        <p className="text-xs font-mono text-neutral-500 dark:text-neutral-400 mb-5">
+          {member.role}
+        </p>
 
-      {/* LinkedIn */}
-      <a
-        href={member.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white text-gray-500 dark:text-gray-400 transition-all duration-200"
-      >
-        <LinkedinIcon className="w-4 h-4" />
-      </a>
+        {/* Social Icons */}
+        <div className="flex items-center gap-2 mt-auto">
+          {member.linkedin && (
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-primary hover:border-primary/50 transition-all"
+              aria-label={`${member.name} LinkedIn`}
+            >
+              <LinkedinIcon className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {member.github && (
+            <a
+              href={member.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-primary hover:border-primary/50 transition-all"
+              aria-label={`${member.name} GitHub`}
+            >
+              <GithubIcon className="w-3.5 h-3.5" />
+            </a>
+          )}
+        </div>
+      </SpotlightCard>
     </motion.div>
   );
 }

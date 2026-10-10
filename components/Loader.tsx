@@ -13,7 +13,7 @@ export default function Loader() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark transition-opacity duration-500">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950 transition-opacity duration-500">
       <div className="flex flex-col items-center gap-4">
         <span className="text-6xl font-heading font-extrabold text-primary animate-pulse">
           µ

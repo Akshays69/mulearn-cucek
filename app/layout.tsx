@@ -13,14 +13,15 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mulearncucek.in"),
   title: "µLearn CUCEK | Break the Echo Chamber",
   description:
-    "µLearn CUCEK is the official µLearn chapter at College of Engineering Chengannur. Join a synergic community of learners, explore interest groups, and unlock real-world opportunities.",
-  keywords: ["mulearn", "CUCEK", "Kerala", "tech community", "interest groups", "students"],
+    "µLearn CUCEK is the official µLearn chapter at Cochin University College of Engineering Kuttanad. Join a synergic community of learners, explore interest groups, and unlock real-world opportunities.",
+  keywords: ["mulearn", "CUCEK", "Cochin University", "Kuttanad", "Kerala", "tech community", "interest groups", "students"],
   openGraph: {
     title: "µLearn CUCEK | Break the Echo Chamber",
     description:
-      "Join µLearn CUCEK — a synergic community of learners at College of Engineering Chengannur.",
+      "Join µLearn CUCEK — a synergic community of learners at Cochin University College of Engineering Kuttanad.",
     url: "https://mulearncucek.in",
     siteName: "µLearn CUCEK",
     locale: "en_IN",
